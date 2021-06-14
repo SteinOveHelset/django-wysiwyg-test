@@ -1,0 +1,25 @@
+{% load static %}
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+<h1>{{ article.title }}</h1>
+
+<hr>
+
+{{ article.content|safe }}
+
+<hr>
+
+{{ article.content_upload|safe }}
+
+<hr>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.media }}
+    {{ form.as_p }}
+
+    <button>Save changes</button>
+</form>
